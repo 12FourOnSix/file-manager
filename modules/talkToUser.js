@@ -1,5 +1,5 @@
-import { userHomeDir } from './pathVars.js'
 import { getUserName } from './getUserName.js'
+import { cwd } from 'process'
 
 const 
   sayHiToUser = () => {
@@ -8,8 +8,8 @@ const
   sayByeToUser = () => {
     console.log(`Thank you for using File Manager, ${getUserName()}!`)
   },
-  informOfCurrentWorkingDir = (cwd = userHomeDir) => {
-    console.log(`You are currently in ${cwd}`)
+  informOfCurrentWorkingDir = () => {
+    console.log(`You are currently in ${cwd()}`)
   },
   informOfInvalidInput = () => {
     console.log('Invalid input')
