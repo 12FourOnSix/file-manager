@@ -1,15 +1,16 @@
 import { getUserName } from './getUserName.js'
 import { cwd } from 'process'
+/* import { whiteOnRed } from './colorsList.js' */
 
 const 
   sayHiToUser = () => {
-    console.log(`Welcome to the File Manager, ${getUserName()}!`)
+    console.log(`\nWelcome to the File Manager, ${getUserName()}!`)
   },
   sayByeToUser = () => {
-    console.log(`Thank you for using File Manager, ${getUserName()}!`)
+    console.log(`\nThank you for using File Manager, ${getUserName()}!`)
   },
   informOfCurrentWorkingDir = () => {
-    console.log(`You are currently in ${cwd()}`)
+    console.log(`\nYou are currently in ${cwd()}`)
   },
   informOfInvalidInput = () => {
     console.log('Invalid input')
