@@ -1,17 +1,21 @@
 import { userHomeDir } from './pathVars.js'
+import { getUserName } from './getUserName.js'
 
 const 
-  informOfInvalidInput = 'Invalid input',
-  informOfOperationFailed = 'Operation failed',
-
-  sayHiToUser = (userName = 'User') => {
-    console.log(`Welcome to the File Manager, ${userName}!`)
+  sayHiToUser = () => {
+    console.log(`Welcome to the File Manager, ${getUserName()}!`)
   },
-  sayByeToUser = (userName = 'User') => {
-    console.log(`Thank you for using File Manager, ${userName}!`)
+  sayByeToUser = () => {
+    console.log(`Thank you for using File Manager, ${getUserName()}!`)
   },
   informOfCurrentWorkingDir = (cwd = userHomeDir) => {
     console.log(`You are currently in ${cwd}`)
+  },
+  informOfInvalidInput = () => {
+    console.log('Invalid input')
+  },
+  informOfOperationFailed = () => {
+    console.log('Operation failed')
   }
 
 export {
