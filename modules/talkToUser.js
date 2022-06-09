@@ -5,13 +5,13 @@ const
   informOfOperationFailed = 'Operation failed',
 
   sayHiToUser = (userName = 'User') => {
-    return `Welcome to the File Manager, ${userName}!`
+    console.log(`Welcome to the File Manager, ${userName}!`)
   },
   sayByeToUser = (userName = 'User') => {
-    return `Thank you for using File Manager, ${userName}!`
+    console.log(`Thank you for using File Manager, ${userName}!`)
   },
   informOfCurrentWorkingDir = (cwd = userHomeDir) => {
-    return `You are currently in ${cwd}`
+    console.log(`You are currently in ${cwd}`)
   }
 
 export {
