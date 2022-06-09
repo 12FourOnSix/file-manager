@@ -1,1 +1,2 @@
-import { appRootDir, userHomeDir, path2FileOrDir } from './modules/path-vars.js'
+import { appRootDir, userHomeDir, path2FileOrDir } from './modules/pathVars.js'
+import * as informUser from './modules/talkToUser.js'
