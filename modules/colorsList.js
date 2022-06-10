@@ -25,10 +25,12 @@ const
 
   fbgColors = {
     whiteOnRed: `${bgColors['red']}${fontColors['white']}%s${resetColor}`,
-    blueOnBlack: `%s${bgColors['black']}${fontColors['blue']}%s${resetColor}`
+    blueOnBlack: `%s${bgColors['black']}${fontColors['blue']}%s${resetColor}`,
+    greenFont: `%s${fontColors['green']}%s${resetColor}`
   }
 
 export const {
   whiteOnRed,
-  blueOnBlack
+  blueOnBlack,
+  greenFont
 } = fbgColors
