@@ -13,16 +13,16 @@ const
     console.log(blueOnBlack, `\nYou are currently in `, `${cwd()}`)
   },
   informOfInvalidInput = () => {
-    console.log('⚠️ Invalid input')
+    console.log('\n⚠️ Invalid input')
   },
   informOfOperationFailed = () => {
-    console.log('⛔ Operation failed')
+    console.log('\n❌ Operation failed')
   }
 
 export {
-  sayHiToUser as sayHi,
-  sayByeToUser as sayBye,
-  informOfCurrentWorkingDir as cwd,
-  informOfInvalidInput as invalidInput,
-  informOfOperationFailed as operationFailed
+  sayHiToUser,
+  sayByeToUser,
+  informOfCurrentWorkingDir,
+  informOfInvalidInput,
+  informOfOperationFailed
 }
