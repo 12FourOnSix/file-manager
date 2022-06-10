@@ -17,9 +17,7 @@ export const calculateHash = async () => {
     hash.update(fileContent)
 
     const hashValue = hash.digest('hex')
-    console.log(greenFont, `The hash for the file ${win32.basename(pathToSrc)} is: `, `${hashValue}`)
+    console.log(greenFont, `\nThe hash for the "${win32.basename(pathToSrc)}" is: \n`, `${hashValue}`)
 
     return hashValue
 }
-
-calculateHash()
