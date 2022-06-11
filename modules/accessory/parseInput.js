@@ -9,7 +9,10 @@ const
   ]
 
 export const parseInput = (line) => {
-  line = line.toLowerCase()
+  const navCommands = ['up', 'cd', 'ls']
+  if (!navCommands.some(command => line.startsWith(command))) {
+    line = line.toLowerCase()
+  }
 
   const 
     strArr = line.split(' '),
