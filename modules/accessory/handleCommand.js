@@ -2,6 +2,8 @@ import { getOpSysInfo } from '../operations/getOSInfo.js'
 import { calculateHash } from '../operations/calcHash.js'
 import { compress } from '../operations/compress.js'
 import { decompress } from '../operations/decompress.js'
+import { navigate } from '../operations/navigate.js'
+
 
 export const handleCommand = (commandObject) => {
   const {
@@ -23,7 +25,11 @@ export const handleCommand = (commandObject) => {
     case 'decompress':
       decompress(arg_1, arg_2)
       break
-    
+    case 'up':
+    case 'cd':
+    case 'ls':
+      navigate(commandObject)
+      break
     
   }
 }
