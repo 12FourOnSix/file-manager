@@ -2,7 +2,7 @@ import { createBrotliCompress } from 'zlib'
 import { pipeline } from 'stream/promises'
 import { createReadStream, createWriteStream, existsSync } from 'fs'
 import { resolve, parse, format } from 'path'
-import { informOfOperationFailed, informOfFileCompressed } from './talkToUser.js'
+import { informOfOperationFailed, informOfFileCompressed } from '../accessory/talkToUser.js'
 
 
 export const compress = async (src, dest) => {

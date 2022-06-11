@@ -2,9 +2,9 @@ import { readFile } from 'fs/promises'
 import { existsSync } from 'fs'
 import { createHash } from 'crypto'
 import { win32 } from 'path'
-import { path2FileOrDir } from './getPath.js'
-import { informOfOperationFailed } from './talkToUser.js'
-import { greenFont } from './colorsList.js'
+import { path2FileOrDir } from '../accessory/getPath.js'
+import { informOfOperationFailed } from '../accessory/talkToUser.js'
+import { greenFont } from '../accessory/colorsList.js'
 
 const pathToSrc = path2FileOrDir('C:/Users/Acer/Desktop/RSSProjects/node-nodejs-basics/src/hash/files/fileToCalculateHashFor.txt')
 

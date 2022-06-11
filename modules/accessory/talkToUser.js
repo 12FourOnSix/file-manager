@@ -4,16 +4,16 @@ import { blueOnBlack } from './colorsList.js'
 
 const 
   sayHiToUser = () => {
-    console.log(`\n🙂 Welcome to the File Manager, ${getUserName()}!`)
+    console.log(`Welcome to the File Manager, ${getUserName()}!`)
   },
   sayByeToUser = () => {
-    console.log(`\nThank you for using File Manager, ${getUserName()}!`)
+    console.log(`\n\nThank you for using File Manager, ${getUserName()}!`)
   },
   informOfCurrentWorkingDir = () => {
-    console.log(blueOnBlack, `\nYou are currently in `, `${cwd()}`)
+    console.log(blueOnBlack, `\nYou are currently in `, `${cwd()}\n`)
   },
   informOfInvalidInput = () => {
-    console.log('\n⚠️ Invalid input')
+    console.log('\n⚠️  Invalid input')
   },
   informOfOperationFailed = () => {
     console.log('\n❌ Operation failed')

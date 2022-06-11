@@ -2,7 +2,7 @@ import { createBrotliDecompress } from 'zlib'
 import { pipeline } from 'stream/promises'
 import { createReadStream, createWriteStream, existsSync } from 'fs'
 import { resolve, parse, format } from 'path'
-import { informOfOperationFailed, informOfFileDecompressed } from './talkToUser.js'
+import { informOfOperationFailed, informOfFileDecompressed } from '../accessory/talkToUser.js'
 
 
 export const decompress = async (src, dest) => {
