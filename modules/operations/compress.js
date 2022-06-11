@@ -3,14 +3,15 @@ import { pipeline } from 'stream/promises'
 import { createReadStream, createWriteStream, existsSync } from 'fs'
 import { resolve, parse, format } from 'path'
 import { informOfOperationFailed, informOfFileCompressed } from '../accessory/talkToUser.js'
+import { cwd } from 'process'
 
 
 export const compress = async (src, dest) => {
   const 
-    pathToSrc = resolve(src),
+    pathToSrc = resolve(cwd(), src),
     destIsFile = dest.endsWith('.br'),
-    pathToDestination = destIsFile ? resolve(dest) : format({
-              dir: resolve(dest),
+    pathToDestination = destIsFile ? resolve(cwd(), dest) : format({
+              dir: resolve(cwd(), dest),
               name: parse(src).name,
               ext: '.br'
             }),

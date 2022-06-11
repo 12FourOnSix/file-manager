@@ -3,12 +3,13 @@ import { pipeline } from 'stream/promises'
 import { createReadStream, createWriteStream, existsSync } from 'fs'
 import { resolve, parse, format } from 'path'
 import { informOfOperationFailed, informOfFileDecompressed } from '../accessory/talkToUser.js'
+import { cwd } from 'process'
 
 
 export const decompress = async (src, dest) => {
   const 
-    pathToSrc = resolve(src),
-    pathToDestination = resolve(dest),
+    pathToSrc = resolve(cwd(), src),
+    pathToDestination = resolve(cwd(), dest),
 
     readStream = createReadStream(pathToSrc),
     writeStream = createWriteStream(pathToDestination),
