@@ -17,6 +17,9 @@ const
   },
   informOfOperationFailed = () => {
     console.log('\n❌ Operation failed')
+  },
+  informOfFileCompressed = () => {
+    console.log('\n✔️  Done! Your file has been compressed')
   }
 
 export {
@@ -24,5 +27,6 @@ export {
   sayByeToUser,
   informOfCurrentWorkingDir,
   informOfInvalidInput,
-  informOfOperationFailed
+  informOfOperationFailed,
+  informOfFileCompressed
 }
