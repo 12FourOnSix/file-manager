@@ -20,6 +20,9 @@ const
   },
   informOfFileCompressed = () => {
     console.log('\n✔️  Done! Your file has been compressed')
+  },
+  informOfFileDecompressed = () => {
+    console.log('\n✔️  Done! Your file has been decompressed')
   }
 
 export {
@@ -28,5 +31,6 @@ export {
   informOfCurrentWorkingDir,
   informOfInvalidInput,
   informOfOperationFailed,
-  informOfFileCompressed
+  informOfFileCompressed,
+  informOfFileDecompressed
 }

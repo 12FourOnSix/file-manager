@@ -12,7 +12,7 @@ export const compress = async (src, dest) => {
     pathToDestination = destIsFile ? resolve(dest) : format({
               dir: resolve(dest),
               name: parse(src).name,
-              ext: parse(src).ext
+              ext: '.br'
             }),
 
     readStream = createReadStream(pathToSrc),
@@ -35,8 +35,4 @@ export const compress = async (src, dest) => {
   )
 
   informOfFileCompressed()
-}
-
-export {
-  compress
 }
