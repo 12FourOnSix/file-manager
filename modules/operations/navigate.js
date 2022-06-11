@@ -1,7 +1,8 @@
 import { cwd, chdir } from 'process'
 import { resolve } from 'path'
+import { list } from '../operations/fileOps/list.js'
 
-export const navigate = (commandObject) => {
+export const navigate = async (commandObject) => {
   const {
     command,
     arg_1
@@ -19,6 +20,7 @@ export const navigate = (commandObject) => {
       break
 
     case 'ls':
+      await list(cwd())
       break
   }
 }

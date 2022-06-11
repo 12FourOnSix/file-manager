@@ -1,16 +1,24 @@
-import { readdir } from 'fs/promises'
-import { existsSync } from 'fs'
+import { readdir, stat } from 'fs/promises'
+import { magentaFont } from '../../accessory/colorsList.js'
 
-const folderPath = './src/fs/files'
+export const list = async (cwd) => {
+    const filenamesArr = await readdir(cwd)
 
-export const list = async () => {
-    if (!existsSync(folderPath)) throw new Error('FS operation failed')
-
-    const filenamesArr = await readdir(folderPath)
+    console.log(`The content of the current directory:`)
 
     for (const filename of filenamesArr) {
-        console.log(filename)
+        try {
+            const statFile = await stat(filename)
+
+            if (statFile.isDirectory()) {
+                console.log(magentaFont, '[Folder] ', filename)
+                continue
+            }
+    
+            console.log(filename)
+
+        } catch (err) {
+            console.error(err.message) // may be EPERM errors for some folders
+        }
     }
 }
-
-list()

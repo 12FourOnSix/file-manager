@@ -5,7 +5,7 @@ import { decompress } from '../operations/decompress.js'
 import { navigate } from '../operations/navigate.js'
 
 
-export const handleCommand = (commandObject) => {
+export const handleCommand = async (commandObject) => {
   const {
     command,
     arg_1,
@@ -28,7 +28,7 @@ export const handleCommand = (commandObject) => {
     case 'up':
     case 'cd':
     case 'ls':
-      navigate(commandObject)
+      await navigate(commandObject)
       break
     
   }

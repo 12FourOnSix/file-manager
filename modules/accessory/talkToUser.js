@@ -13,10 +13,10 @@ const
     console.log(blueOnBlack, `\nYou are currently in `, `${cwd()}\n`)
   },
   informOfInvalidInput = () => {
-    console.log('\n⚠️  Invalid input')
+    console.log('\nInvalid input')
   },
   informOfOperationFailed = () => {
-    console.log('\n❌ Operation failed')
+    console.log('\nOperation failed')
   },
   informOfFileCompressed = () => {
     console.log('\n✔️  Done! Your file has been compressed')

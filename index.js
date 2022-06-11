@@ -1,4 +1,5 @@
 import { chdir, stdin, stdout, argv } from 'process'
+import { homedir } from 'os'
 import { createInterface } from 'readline'
 import { appRootDir, userHomeDir, path2FileOrDir } from './modules/accessory/pathVars.js'
 import { sayByeToUser, sayHiToUser, informOfCurrentWorkingDir } from './modules/accessory/talkToUser.js'
@@ -11,17 +12,18 @@ const rl = createInterface({
 })
 
 
-const runApp = async () => {
+const runApp = () => {
   sayHiToUser()
+  chdir(homedir())
   informOfCurrentWorkingDir()
   
   rl.prompt()
   
-  rl.on('line', (inputData) => {
+  rl.on('line', async (inputData) => {
     if (/.exit/gi.test(inputData)) rl.close()
   
     const commandParsed = parseInput(inputData)
-    handleCommand(commandParsed)
+    await handleCommand(commandParsed)
   
     informOfCurrentWorkingDir()
     rl.prompt()
