@@ -1,27 +1,20 @@
-import { copyFile, readdir, mkdir } from 'fs/promises'
-import { existsSync } from 'fs'
-import { resolve } from 'path'
+import { copyFile } from 'fs/promises'
+import { constants } from 'fs'
+import { cwd } from 'process'
+import { parse, resolve } from 'path'
+import { informOfOperationFailed, informOfSuccess } from '../../accessory/talkToUser.js'
 
-const 
-    origFolderPath = './src/fs/files',
-    destFolderPath = './src/fs/files_copy'
+export const copy = async (path_to_file, path_to_new_directory) => {
+    try {
+      const 
+        srcPath = resolve(cwd(), path_to_file),
+        destBaseName = parse(path_to_new_directory).base ? '' : parse(srcPath).base,
+        destFullPath = resolve(cwd(), path_to_new_directory, destBaseName)
 
-export const copy = async () => {
-    if (!existsSync(origFolderPath) || existsSync(destFolderPath)) {
-        throw new Error('FS operation failed')
-    }
+      await copyFile(srcPath, destFullPath, constants.COPYFILE_EXCL)
+      informOfSuccess()
 
-    await mkdir(destFolderPath)
-    const files = await readdir(origFolderPath)
-
-    for await (const filename of files) {
-        const 
-            origFilePath = resolve(origFolderPath, filename),
-            destFilePath = resolve(destFolderPath, filename)
-
-        copyFile(origFilePath, destFilePath)
+    } catch (err) {
+      informOfOperationFailed(err)
     }
 }
-
-
-copy()

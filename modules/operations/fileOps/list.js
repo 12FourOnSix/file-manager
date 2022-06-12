@@ -4,7 +4,7 @@ import { magentaFont } from '../../accessory/colorsList.js'
 export const list = async (cwd) => {
     const filenamesArr = await readdir(cwd)
 
-    console.log(`The content of the current directory:`)
+    console.log(`The content of the current directory:\n`)
 
     for (const filename of filenamesArr) {
         try {

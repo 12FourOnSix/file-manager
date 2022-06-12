@@ -15,14 +15,20 @@ const
   informOfInvalidInput = () => {
     console.log('\nInvalid input')
   },
-  informOfOperationFailed = () => {
-    console.log('\nOperation failed')
+  informOfOperationFailed = (err) => {
+    console.log('\n❌ Operation failed\n', err.message)
   },
   informOfFileCompressed = () => {
     console.log('\n✔️  Done! Your file has been compressed')
   },
   informOfFileDecompressed = () => {
     console.log('\n✔️  Done! Your file has been decompressed')
+  },
+  informOfFileCreated = () => {
+    console.log('\n✔️  Done! New file has been created')
+  },
+  informOfSuccess = () => {
+    console.log('\n✔️  Done!')
   }
 
 export {
@@ -32,5 +38,7 @@ export {
   informOfInvalidInput,
   informOfOperationFailed,
   informOfFileCompressed,
-  informOfFileDecompressed
+  informOfFileDecompressed,
+  informOfFileCreated,
+  informOfSuccess
 }

@@ -9,8 +9,8 @@ const
   ]
 
 export const parseInput = (line) => {
-  const navCommands = ['up', 'cd', 'ls']
-  if (!navCommands.some(command => line.startsWith(command))) {
+  const commandMayBeUppercase = allowedCommands
+  if (!commandMayBeUppercase.some(command => line.startsWith(command))) {
     line = line.toLowerCase()
   }
 
@@ -33,5 +33,5 @@ export const parseInput = (line) => {
       return
   }
   
-  return commandParsed
+  return commandParsed || {}
 }

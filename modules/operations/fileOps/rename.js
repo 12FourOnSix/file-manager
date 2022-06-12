@@ -1,17 +1,22 @@
-import { rename as renameFile } from 'fs/promises'
+import { rename as rn } from 'fs/promises'
 import { existsSync } from 'fs'
+import { cwd } from 'process'
+import { resolve, extname, dirname } from 'path'
+import { informOfOperationFailed, informOfSuccess } from '../../accessory/talkToUser.js'
 
-const 
-    wrongFilenamePath = './src/fs/files/wrongFilename.txt',
-    properFilenamePath = './src/fs/files/properFilename.md'
+export const rename = async (path_to_file, new_filename) => {
+  try {
+    const 
+      oldPathToFile = resolve(cwd(), path_to_file),
+      extOfNewName = extname(new_filename) ? '' : extname(oldPathToFile),
+      newPathToFile = resolve(dirname(oldPathToFile), new_filename, extOfNewName)
 
-export const rename = async () => {
-    if (!existsSync(wrongFilenamePath) || existsSync(properFilenamePath)) {
-        throw new Error('FS operation failed')
-    }
+    if (!existsSync(oldPathToFile) || existsSync(newPathToFile)) throw new Error
+    
+    await rn(oldPathToFile, newPathToFile)
+    informOfSuccess()
 
-    await renameFile(wrongFilenamePath, properFilenamePath)
+  } catch (err) {
+    informOfOperationFailed()
+  }
 }
-
-
-rename()
