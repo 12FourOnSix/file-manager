@@ -10,6 +10,6 @@ export const add = async (new_file_name) => {
     informOfSuccess()
     
   } catch(err) {
-    informOfOperationFailed()
+    informOfOperationFailed(err)
   }
 }

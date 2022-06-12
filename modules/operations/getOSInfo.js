@@ -1,5 +1,6 @@
 import * as os from 'os'
 import { greenFont } from '../accessory/colorsList.js'
+import { informOfOperationFailed } from '../accessory/talkToUser.js'
 
 const 
   { EOL, cpus, homedir, userInfo, arch } = os,
@@ -43,25 +44,29 @@ const
   }
 
 export const getOpSysInfo = (command) => {
-  switch (command) {
-    case '--eol':
-      showEOLInfo()
-      break
-
-    case '--cpus':
-      showCpusInfo()
-      break
-
-    case '--homedir':
-      showHomeDirInfo()
-      break
-
-    case '--username':
-      showUserNameInfo()
-      break
-
-    case '--architecture':
-      showArchInfo()
-      break
+  try {
+    switch (command) {
+      case '--eol':
+        showEOLInfo()
+        break
+  
+      case '--cpus':
+        showCpusInfo()
+        break
+  
+      case '--homedir':
+        showHomeDirInfo()
+        break
+  
+      case '--username':
+        showUserNameInfo()
+        break
+  
+      case '--architecture':
+        showArchInfo()
+        break
+    }
+  } catch (err) {
+    informOfOperationFailed(err)
   }
 }

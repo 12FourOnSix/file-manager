@@ -24,15 +24,18 @@ const
   },
 
   fbgColors = {
-    whiteOnRed: `${bgColors['red']}${fontColors['white']}%s${resetColor}`,
-    blueOnBlack: `%s${bgColors['black']}${fontColors['blue']}%s${resetColor}`,
+    magentaFont: `${fontColors['magenta']}%s${resetColor}%s`,
+    yellowFont: `${fontColors['yellow']}%s${resetColor}%s`,
     greenFont: `%s${fontColors['green']}%s${resetColor}`,
-    magentaFont: `${fontColors['magenta']}%s${resetColor}%s`
+    redFont: `${fontColors['red']}%s${resetColor}`,
+    cyanFont: `%s${fontColors['cyan']}%s${resetColor}`
+
   }
 
 export const {
-  whiteOnRed,
-  blueOnBlack,
-  greenFont,
-  magentaFont
+  magentaFont,
+  greenFont, 
+  redFont,
+  cyanFont, 
+  yellowFont
 } = fbgColors

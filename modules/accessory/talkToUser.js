@@ -1,6 +1,6 @@
 import { getUserName } from './getUserName.js'
 import { cwd } from 'process'
-import { blueOnBlack } from './colorsList.js'
+import { cyanFont, redFont, yellowFont } from './colorsList.js'
 
 const 
   sayHiToUser = () => {
@@ -10,25 +10,17 @@ const
     console.log(`\n\nThank you for using File Manager, ${getUserName()}!`)
   },
   informOfCurrentWorkingDir = () => {
-    console.log(blueOnBlack, `\nYou are currently in `, `${cwd()}\n`)
+    console.log(cyanFont, `\nYou are currently in `, `${cwd()}\n`)
   },
   informOfInvalidInput = () => {
-    console.log('\nInvalid input')
+    console.log(redFont, '\nInvalid input')
   },
   informOfOperationFailed = (err) => {
-    console.log('\n❌ Operation failed\n', err.message)
-  },
-  informOfFileCompressed = () => {
-    console.log('\n✔️  Done! Your file has been compressed')
-  },
-  informOfFileDecompressed = () => {
-    console.log('\n✔️  Done! Your file has been decompressed')
-  },
-  informOfFileCreated = () => {
-    console.log('\n✔️  Done! New file has been created')
+    console.log(redFont, '\nOperation failed')
+    console.log(err.message)
   },
   informOfSuccess = () => {
-    console.log('\n✔️  Done!')
+    console.log(yellowFont, '\nDone!')
   }
 
 export {
@@ -37,8 +29,5 @@ export {
   informOfCurrentWorkingDir,
   informOfInvalidInput,
   informOfOperationFailed,
-  informOfFileCompressed,
-  informOfFileDecompressed,
-  informOfFileCreated,
   informOfSuccess
 }

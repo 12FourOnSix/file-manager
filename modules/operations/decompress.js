@@ -1,32 +1,37 @@
 import { createBrotliDecompress } from 'zlib'
 import { pipeline } from 'stream/promises'
 import { createReadStream, createWriteStream, existsSync } from 'fs'
-import { resolve, parse, format } from 'path'
-import { informOfOperationFailed, informOfFileDecompressed } from '../accessory/talkToUser.js'
-import { cwd } from 'process'
+import { resolve } from 'path'
+import { informOfOperationFailed, informOfSuccess } from '../accessory/talkToUser.js'
 
 
 export const decompress = async (src, dest) => {
-  const 
-    pathToSrc = resolve(cwd(), src),
-    pathToDestination = resolve(cwd(), dest),
+  try {
+    const 
+      crsPath = resolve(src),
+      destPath = resolve(dest),
+      readStream = createReadStream(crsPath),
+      writeStream = createWriteStream(destPath),
+      brotliDecompress = createBrotliDecompress()
 
-    readStream = createReadStream(pathToSrc),
-    writeStream = createWriteStream(pathToDestination),
-    brotliDecompress = createBrotliDecompress()
+    readStream.on('error', (err) => {
+      if (err.code === 'ENOENT') {
+        informOfOperationFailed(err)
+      }
+    })
 
+    if (existsSync(destPath)) return
 
-  readStream.on('error', (err) => {
-    if (err.code === 'ENOENT') {
-      informOfOperationFailed()
-    }
-  })
+    await pipeline(
+      readStream, 
+      brotliDecompress, 
+      writeStream
+    )
 
-  await pipeline(
-    readStream, 
-    brotliDecompress, 
-    writeStream
-  )
+    informOfSuccess()
 
-  informOfFileDecompressed()
+  } catch (err) {
+    informOfOperationFailed(err)
+    console.log(err)
+  }
 }
