@@ -24,15 +24,15 @@ export const handleCommand = async (commandObject) => {
       break
 
     case 'hash':
-      calculateHash(arg_1)
+      await calculateHash(arg_1)
       break
 
     case 'compress':
-      compress(arg_1, arg_2)
+      await compress(arg_1, arg_2)
       break
 
     case 'decompress':
-      decompress(arg_1, arg_2)
+      await decompress(arg_1, arg_2)
       break
 
     case 'up':

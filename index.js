@@ -1,4 +1,4 @@
-import { chdir, stdin, stdout, argv } from 'process'
+import { chdir, stdin, stdout } from 'process'
 import { homedir } from 'os'
 import { createInterface } from 'readline'
 import { sayByeToUser, sayHiToUser, informOfCurrentWorkingDir } from './modules/accessory/talkToUser.js'
@@ -9,7 +9,6 @@ const rl = createInterface({
   input: stdin,
   output: stdout
 })
-
 
 const runApp = () => {
   sayHiToUser()
@@ -22,7 +21,6 @@ const runApp = () => {
     if (/.exit/gi.test(inputData)) rl.close()
   
     const commandParsed = parseInput(inputData)
-
     await handleCommand(commandParsed)
 
     informOfCurrentWorkingDir()
@@ -35,4 +33,9 @@ const runApp = () => {
   })
 }
 
-runApp()
+
+try {
+  runApp()
+} catch (err) {
+  console.error(err.message)
+}
