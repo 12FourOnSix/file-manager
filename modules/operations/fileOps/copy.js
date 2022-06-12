@@ -1,17 +1,14 @@
-import { copyFile, stat } from 'fs/promises'
+import { copyFile } from 'fs/promises'
 import { constants } from 'fs'
 import { parse, resolve } from 'path'
 import { informOfOperationFailed, informOfSuccess } from '../../accessory/talkToUser.js'
 
-export const copy = async (srcPath, destPath) => {
+export const copy = async (srcFilePath, destDirPath) => {
     try {
       const
-        statDest = await stat(destPath),
-        isDirDest = statDest.isDirectory(),
-
-        srcFullPath = resolve(srcPath),
-        srcFilename = parse(srcPath).base,
-        destFullPath = resolve(destPath, isDirDest ? srcFilename : '')
+        srcFullPath = resolve(srcFilePath),
+        srcFilename = parse(srcFilePath).base,
+        destFullPath = resolve(destDirPath, srcFilename)
 
       await copyFile(srcFullPath, destFullPath, constants.COPYFILE_EXCL)
       informOfSuccess()
